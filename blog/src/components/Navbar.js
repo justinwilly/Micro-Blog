@@ -9,6 +9,7 @@ const Navbar = () => {
                     backgroundColor: "#f1356d",
                     borderRadius: "8px",
                 }}>New Blog</a>
+                {/* in line style (in javascript) */}
             </div>
         </nav>
     );
