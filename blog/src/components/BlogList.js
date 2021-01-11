@@ -1,9 +1,14 @@
 //slc => tab
-const BlogList = (props) => {
+const BlogList = ({ blogs, title, handleDelete}) => {
 
-    const blogs = props.blogs;
-    const title = props.title;
-    console.log(props,blogs)
+
+
+    // const blogs = props.blogs;
+    // const title = props.title;
+    // console.log(props,blogs)
+
+
+
 
     // or can be written as => const BlogList = (blogs, title) => {
 
@@ -16,6 +21,7 @@ const BlogList = (props) => {
                     <h2>{blog.title}</h2>
                     <p>Written by {blog.author}</p>
                     <p>{blog.body}</p>
+                    <button onClick={() => handleDelete(blog.id)}>Delete Blog</button>
                 </div>   
             ))}
         </div>
