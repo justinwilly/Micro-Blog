@@ -11,10 +11,14 @@ const [blogs, setBlogs] = useState([
 ]);
 
 
+const handleDelete = (id) => {
+    const newBlogs = blogs.filter(blog => blog.id != id)
+    setBlogs(newBlogs);
+}
+
     return (
         <div className="home">
-            <BlogList blogs={blogs} title="All Blogs"/> 
-            <BlogList blogs={blogs.filter((blog) => blog.author === "justin" )} title="Justin's Blogs"/> 
+            <BlogList blogs={blogs} title="All Blogs" handleDelete={handleDelete}/> 
         </div>
     );
 }
@@ -22,6 +26,7 @@ const [blogs, setBlogs] = useState([
 export default Home;
 
 
+//********************//
     // const [name, setName] = useState('Justin');
 
     // const [age, setAge] = useState(29);
@@ -44,3 +49,8 @@ export default Home;
             
     //         {/* arrow function for onClick */}
     //         <button onClick={(e) => handleClickAgain('justin', e)}> Click me now</button>
+
+
+//********************//
+    {/* filter method fires a callback function for each item in the array above */}
+    // <BlogList blogs={blogs.filter((blog) => blog.author === "justin" )} title="Justin's Blogs"/> 
