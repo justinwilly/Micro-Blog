@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import BlogList from './BlogList';
 
 const Home = () => {
@@ -11,14 +11,26 @@ const [blogs, setBlogs] = useState([
 ]);
 
 
+const [name, setName] = useState("justin")
+
 const handleDelete = (id) => {
-    const newBlogs = blogs.filter(blog => blog.id != id)
+    const newBlogs = blogs.filter(blog => blog.id !== id)
     setBlogs(newBlogs);
 }
 
+//doesn't need to be stored as a const, just pass a function as an argument
+// it runs on every render and can be used to fetch data
+//[] this empty array makes it so it only runs on the first render
+useEffect(() => {
+    console.log('useEffect ran')
+    console.log(blogs)
+}, []); 
+
     return (
         <div className="home">
-            <BlogList blogs={blogs} title="All Blogs" handleDelete={handleDelete}/> 
+            <BlogList blogs={blogs} title="All Blogs" handleDelete={handleDelete}/>
+            <button onClick={() => setName("tanner")}>Change Name</button>
+            <p>{name}</p>
         </div>
     );
 }
