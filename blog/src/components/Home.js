@@ -4,12 +4,15 @@ import BlogList from './BlogList';
 const Home = () => {
 
     //a useState array of blogs
-const [blogs, setBlogs] = useState([
-    { title: 'My new website', body: 'lorem ipsum...', author: 'mario', id: 1 },
-    { title: 'Welcome party!', body: 'lorem ipsum...', author: 'yoshi', id: 2 },
-    { title: 'Web dev top tips', body: 'lorem ipsum...', author: 'justin', id: 3 }
-]);
+//original data of blogs    
+// const [blogs, setBlogs] = useState([
+//     { title: 'My new website', body: 'lorem ipsum...', author: 'mario', id: 1 },
+//     { title: 'Welcome party!', body: 'lorem ipsum...', author: 'yoshi', id: 2 },
+//     { title: 'Web dev top tips', body: 'lorem ipsum...', author: 'justin', id: 3 }
+// ]);
 
+//new data for blogs
+    const [blogs, setBlogs] = useState(null);
 
 const [name, setName] = useState("justin")
 
@@ -21,10 +24,21 @@ const handleDelete = (id) => {
 //doesn't need to be stored as a const, just pass a function as an argument
 // it runs on every render and can be used to fetch data
 //[] this empty array makes it so it only runs on the first render
-useEffect(() => {
-    console.log('useEffect ran')
-    console.log(blogs)
-}, []); 
+// useEffect(() => {
+//     console.log('useEffect ran')
+//     console.log(blogs)
+// }, []); 
+
+    useEffect(() => {
+        //GET request
+        fetch('http://localhost:8000/blogs')
+        .then(response => {
+            return response.json()
+        })
+        .then ((data) => {
+            
+        })
+    })
 
     return (
         <div className="home">
@@ -37,6 +51,10 @@ useEffect(() => {
 
 export default Home;
 
+
+
+// put into seperate terminal to fill with api endpoints
+// ****** npx json-server --watch data/db.json --port 8000 **********//
 
 //********************//
     // const [name, setName] = useState('Justin');
